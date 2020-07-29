@@ -6,7 +6,7 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y perl libjson-perl make
 RUN cpan -i Net::MQTT::Simple
 
-COPY scripts/dvr-alarm-server.pl /usr/bin/dvr-alarm-server.pl
+COPY script/dvr-alarm-server.pl /usr/bin/dvr-alarm-server.pl
 
 ENV MQTT_HOST localhost
 ENV MQTT_PORT 1883
