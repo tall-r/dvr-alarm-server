@@ -81,7 +81,10 @@ class AlarmServerHandler(socketserver.BaseRequestHandler):
         json_data = json.loads(payload)
         event_type = json_data.get('Type')
         event = json_data.get('Event')
-        serialID = json_data.get('SerialID')
+        if "Channel" in json_data:
+          serialID = str(json_data.get('SerialID')) + "/" + str(json_data.get('Channel'))
+        else:
+          serialID = json_data.get('SerialID')
 
         LOG.log_info ("{} Serial: {}; Event: {}".format(event_type, serialID, event))
 
